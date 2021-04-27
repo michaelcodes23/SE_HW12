@@ -62,6 +62,17 @@ app.post('/logs',(req,res)=>{
 
     // res.redirect('/logs/show')
 })
+//Edit
+app.get('/logs/:id/edit', async (req, res) =>{
+    // res.send('Update Pokemon' + req.params.id)
+  captLogs.find({},(error, getLog)=>{
+    console.log(getLog[req.params.id])
+    res.render('edit.ejs', {
+        data: getLog[req.params.id],
+        id: req.params.id
+    })
+})
+})
 
 //Delete
 app.delete('/logs/:id',(req,res)=>{

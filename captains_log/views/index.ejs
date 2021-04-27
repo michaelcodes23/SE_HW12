@@ -7,6 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Captain's Log - Index</title>
 </head>
+<style>
+    form{
+        display: inline-block
+    }
+</style>
 <body>
    <h1>Captain Boat Logs</h1>
    <ul>
@@ -14,7 +19,8 @@
            <li>
                <a href="/logs/<%=[i]%>"">
                <%=data[i].title%>    
-               </a>
+               </a><br>
+               <a href = "/logs/<%=i%>/edit"><button >Edit</button></a>
                <form method="POST" action="/logs/<%=i%>?_method=DELETE">
                 <button type = "submit">Delete</button></a>
             </form>
