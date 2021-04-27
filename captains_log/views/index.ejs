@@ -8,7 +8,6 @@
     <title>Captain's Log - Index</title>
 </head>
 <body>
-   <h1><%=data[0].title%></h1>
    <h1>Captain Boat Logs</h1>
    <ul>
        <% for(let i=0;i < data.length;i++){ %>
@@ -16,6 +15,9 @@
                <a href="/logs/<%=[i]%>"">
                <%=data[i].title%>    
                </a>
+               <form method="POST" action="/logs/<%=i%>?_method=DELETE">
+                <button type = "submit">Delete</button></a>
+            </form>
            </li>
        <%}%>
    </ul>

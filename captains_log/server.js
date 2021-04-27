@@ -1,9 +1,13 @@
 const express = require('express')
 const app = express();
 const port = 3000;
-//Mongoose Dependencies
+//Adding method to allow for deletion of entry
+const methodOverride = require('method-override');
+
 //Allow us to post the form data
 app.use(express.urlencoded({extended: true}))
+//use methodOverride
+app.use(methodOverride('_method'));
 //Creater Your Log in MongoDB
 const mongoose = require('mongoose');
 const captLogs = require('./models/logs.js');
@@ -21,7 +25,6 @@ app.get('/logs/',(req, res) => {
     //     data: captLogs.find()
     // })
     captLogs.find({},(error, getLog)=>{
-        console.log(getLog)
         res.render('index.ejs',{
             data: getLog
         })
@@ -58,6 +61,20 @@ app.post('/logs',(req,res)=>{
     })
 
     // res.redirect('/logs/show')
+})
+
+//Delete
+app.delete('/logs/:id',(req,res)=>{
+
+    captLogs.find({},(error, getLog)=>{
+        console.log("trying to delete now test 2 " + getLog[req.params.id])
+        // getLog.splice(getLog[req.params.id],1)
+        getLog.splice(req.params.id,1);
+        console.log(getLog);
+        
+    })
+    res.redirect('/logs')
+    
 })
 
 app.listen(port,()=>{
