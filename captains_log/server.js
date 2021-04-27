@@ -48,7 +48,7 @@ app.get('/logs/:id', (req, res) => {
     // res.send("Your ship id is " + [req.params.id])
 })
 
-//Post - Create Route
+//Post - Create Route for New Ship Logs
 app.post('/logs',(req,res)=>{
     // res.send('received')
     if(req.body.shipIsBroken === 'on'){
@@ -72,6 +72,16 @@ app.get('/logs/:id/edit', async (req, res) =>{
         id: req.params.id
     })
 })
+})
+
+//Update Route - for updating Ship Logs
+
+app.put('/logs/:id', (req, res) => {
+
+    captLogs.find({},(error, getLog)=>{
+        console.log('Req.body is Pus: ' + getLog[req.params.id])
+    })
+    res.redirect('/logs/');
 })
 
 //Delete
