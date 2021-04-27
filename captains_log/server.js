@@ -29,17 +29,22 @@ app.get('/logs/',(req, res) => {
 })
 
 
-
-app.get('/pokemon', (req , res) => {
-    
-    res.render('index.ejs',{
-        data: pokemon
-        });
-});
 //route for new.ejs
 app.get('/logs/new',(req, res) => {
     res.render('new.ejs')
 })
+//route for show.ejs
+app.get('/logs/:id', (req, res) => {
+    captLogs.find({},(error, getLog)=>{
+        console.log(getLog[req.params.id])
+        res.render('show.ejs', {
+            data: getLog[req.params.id]
+        })
+    })
+
+    // res.send("Your ship id is " + [req.params.id])
+})
+
 //Post - Create Route
 app.post('/logs',(req,res)=>{
     // res.send('received')
