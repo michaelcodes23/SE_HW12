@@ -9,7 +9,7 @@
 </head>
 <body>
     <h2>Edit Your Ship's Log Here</h2>
-    <form action="/logs/<%=id%>?_method=PUT" method="POST">
+    <form action="/logs/<%=data.id%>?_method=PUT" method="POST">
         Name: <input type='text' name='title' id = 'title' value = "<%=data.title%>"/><br>
         Entry: <input type='text' name='entry' id = 'entry' value = "<%=data.entry%>"/><br>
         Ship is broken: <input type='checkbox' name='shipIsBroken' id = "shipisBroken" value = "<%=data.shipisBroken%>"/><br>

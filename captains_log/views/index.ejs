@@ -20,8 +20,8 @@
                <a href="/logs/<%=[i]%>"">
                <%=data[i].title%>    
                </a><br>
-               <a href = "/logs/<%=i%>/edit"><button >Edit</button></a>
-               <form method="POST" action="/logs/<%=i%>?_method=DELETE">
+               <a href = "/logs/<%=data[i].id%>/edit"><button >Edit</button></a>
+               <form method="POST" action="/logs/<%=data[i]._id%>?_method=DELETE">
                 <button type = "submit">Delete</button></a>
             </form>
            </li>
